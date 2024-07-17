@@ -18,7 +18,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 // 기능 설정이라는 어노테이션
 @Configuration
-@PropertySource("classpath://config.properties") // github 에 올리지 않고, 이메일, 이름, 비밀번호와 같이 암호화해서 사용해야하는
+@PropertySource("classpath:/config.properties") // github 에 올리지 않고, 이메일, 이름, 비밀번호와 같이 암호화해서 사용해야하는
 // 설정을 가지고 오는 것 
 // Property = 재산, 자산 개발자가 사용자(고객들)한테 인증번호를 보낼 이메일이나 이메일번호
 // 또는 데이터베이스 아이디 비밀번호 주소와 같이 회사에서 비공개적으로 보호해야하는 자신을 작성하는 공간
@@ -67,6 +67,7 @@ public class DBConfig {
 		return sfb.getObject();
 	}
 	
+	
 	// 가본 SQL 실행한 다음 insert update delete 같은 경우 commit 이나 rollback 처리
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sf) {
@@ -78,4 +79,12 @@ public class DBConfig {
 	public DataSourceTransactionManager dataSourceTransactionManager(DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
+	
+	
+	/** SqlSessionTemplate DataSourceTransactionManger 차이
+	 * SqlSessionTemplate		    -> insert select update delete 실행
+	 * DataSourceTransactionManager -> SqlSessionTemplate 실행한 결과를 Commit, Rollback
+	 * DB 완벽히 저장을 하거나 되돌리는 작업
+	 */
+
 }
