@@ -85,6 +85,16 @@ public class TodoController {
 	public int delete(@RequestBody int todoNo) {
 		return service.delete(todoNo);
 	}
+	
+	/** RestAPI 테스트
+	 * @return 100
+	 */
+	
+	@GetMapping("/test")
+	public int test() {
+		return 100;
+	}
+	
 	/*
 	CRUD : DB 에서 데이터 조작의 기본적인 네가지 작업
 	CREATE : 새로운 데이터를 생성    INSERT
