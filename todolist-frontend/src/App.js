@@ -1,31 +1,33 @@
 import React, {useState} from 'react';
-import LoginContext from './components/LoginContext';
-import Signup from './components/SignUp';
+import Signup from './components/Signup';
 import Login from './components/Login';
+import TodoList from './components/TodoList';
+import TodoListContext from './components/TodoListContext';
+import LoginContext from './components/LoginContext';
 import './App.css';
 
 
 function App() {
   const [signupView, setSignupView] = useState(false);
   const [loginMember, setLoginMember] = useState(null);
-  
+  const [todoList, setTodoList] = useState([]);
   return (
     
-    <LoginContext.Provider value={{loginMember, setLoginMember}}>
+    <TodoListContext.Provider value={{loginMember, setLoginMember, todoList, setTodoList}}>
       <button onClick={() => {setSignupView(!signupView)}}>
         {signupView ? ('회원가입 닫기') : ('회원가입 열기')}
       </button>
 
       <div className='signup-wrapper'>
-        {signUpView === true && (<Signup/>)}
+        {signupView === true && (<Signup/>)}
       </div>
       <h1>Todo List</h1>
 
       <Login/>
 
       <hr></hr>
-    
-    </LoginContext.Provider>
+      {loginMember && (<TodoList/>)}
+    </TodoListContext.Provider>
 
   );
 }
