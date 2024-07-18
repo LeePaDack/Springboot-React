@@ -131,7 +131,7 @@ const TodoList = () => {
                     {todoList.map((todo,index) =>(
                         <li key={keyIndex++}>
                             <div>
-                                <span className={todo.isDone === 'X' ? 'todo-complate' : ''}>
+                                <span className={todo.isDone === 'X' ? 'todo-compleate' : ''}>
                                     {todo.title}
                                 </span>
                                 <span>
