@@ -16,4 +16,12 @@
 		INSERT INTO user(name, email)
 		VALUES(#{name}, #{email})
 	</insert>
+	
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM user WHERE id = #{id}
+	</delete>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE 
+	</update>
 </mapper>
