@@ -17,11 +17,13 @@
 		VALUES(#{name}, #{email})
 	</insert>
 	
-	<delete id="deleteUser" parameterType="int">
+	<delete id="deleteUser" parameterType="User">
 		DELETE FROM user WHERE id = #{id}
 	</delete>
 	
 	<update id="updateUser" parameterType="User">
-		UPDATE 
+		UPDATE user
+		SET name = #{name}, email = #{email}
+		WHERE id = #{id}
 	</update>
 </mapper>
