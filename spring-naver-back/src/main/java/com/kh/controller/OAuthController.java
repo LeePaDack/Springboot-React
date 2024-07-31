@@ -8,11 +8,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import com.mysql.cj.Session;
 
 import jakarta.servlet.http.HttpSession;
 // import javax : 구버전
@@ -26,7 +25,7 @@ NaverLoginController.java 주소(api url) 충돌을 막기 위해
  */
 
 @RestController
-// @RequestMapping("/api")
+@RequestMapping("/naver") // NaverRegist 와 주소 충돌을 방지하기 위해 임의로 작성
 public class OAuthController {
 	@Value("${naver.client-id}")
 	private String clientId;
