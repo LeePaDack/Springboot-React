@@ -13,7 +13,7 @@
 	
 	<!-- posts 게시글 테이블에 title = 제목  content = 내용 작성 -->
 	<insert id="insertPost">
-		INSERT INTO posts (title, content) VAULUES(#{title}, #{content})
+		INSERT INTO posts (title, content) VALUES(#{title}, #{content})
 	</insert>
 	
 	<insert id = "insertImage">
