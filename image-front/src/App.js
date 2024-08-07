@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -25,6 +25,8 @@ function App() {
             }
         });
         alert("자바로 이미지 전송했습니다.");
+        // 이미지 업로드를 DB 에 하고 나서 업로드된 이미지를 불러오기
+        게시물가져오기();
     }
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -39,34 +41,83 @@ function App() {
       }
     }
 
-    const 사진불러오기 = () => {
-        
+    const [posts,setPosts] = useState([]);
+
+    // const 기능을 작성해놓고 필요할 때 기능을 사용하기 위해 설정
+    const 게시물가져오기 = () => {
+        axios.get("http://localhost:9007/posts") // 자바 컨트롤러 url 과 api 주소에서 데이터 가져오기
+        .then(response => {
+            setPosts(response.data);
+            console.log(response.data);
+        });
     }
+
+    // 맨 처음 사이트 들어왔을 때 게시물을 바로 가져오게 하고싶음
+    useEffect(() => {
+        게시물가져오기();
+    }, []);
 
     return (
         <div className="App">
-                <div>
-                    <label>제목:</label>
-                    <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
-                </div>
-                <div>
-                    <label>내용:</label>
-                    <textarea value={content} onChange={(e) => setContent(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="imgSelect">이미지선택:</label>
-                    <input multiple className='image-inputs' id="imgSelect" type="file" accept="image.*" 
-                    onChange={(e) => setFiles(e.target.files)}/>
-                </div>
-                {selectedImage && (
-                  <div>
-                  <h2>미리보기</h2>
-                  <img src={selectedImage}/>
-                  </div>
-                )}
-                <button onClick={Java에업로드}>Submit</button>
+                <div className='form-container'>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label>제목:</label></td>
+                                <td><input type='text' value={title} onChange={(e) => setTitle(e.target.value)}/></td>
+                            </tr>
+                            <tr>
+                                <td><label>내용:</label></td>
+                                <td><textarea value={content} onChange={(e) => setContent(e.target.value)}/></td>
+                            </tr>
+                            <tr>
+                                <td><label htmlFor="imgSelect" className='file-label'>이미지선택:
+                                <input multiple className='image-inputs' id="imgSelect" type="file" accept="image.*" 
+                                onChange={(e) => setFiles(e.target.files)}/>
+                                </label></td>
+                            </tr>
+                            <tr>
+                                <td><button onClick={Java에업로드}>이미지 업로드 버튼</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div className='posts-container'>
+                    <h1>---------------</h1>
+                    {posts.map(post => (
+                    <div key={post.id} className='post'>
+                        <h2><strong>제목</strong> : {post.title}</h2>
+                        <p><strong>내용</strong> : {post.content}</p>
+                        <p><strong>생성 날짜</strong> : {post.createdAt}</p>
+                        {/* 
+                        {post.files && post.files.map(file => ()
+                            post.files : 존재할 경우에만 && 뒤에 코드가 실행
+                        
+                        
+                        {post.files && post.files.map(file => (
+                            <img key={file} src={file} />
+                        ))
 
-                <button onClick={사진불러오기}>불러오기</button>
+                        }
+                        // Array 에 대한 배열이 제대로 나오지 않으면 에러가 발생할 가능성이 높음
+                        , 구분을 따로 설정
+                            
+                        */}
+                        {/* DB 에 이미지 여러장 저장을 , 로 설정해서 여러장을 저장했기 때문에
+                            , 기준으로 이미지를 가져와야함
+                        */}
+                        <div className='images'>
+                            <p><strong>이미지 ID</strong> : {post.id}</p>
+                            {post.imageUrl.split(',').map(image => (
+                                <img key={image} src={`http://localhost:9007/images/${image}`}/>
+                            ))}
+                        </div>
+                        <button>이미지 수정하기</button>
+                        <p>----------------------------------------------------------------------------</p>
+
+                    </div>
+                    ))}
+                </div>
         </div>
     );
 }
