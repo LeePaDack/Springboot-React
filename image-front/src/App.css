@@ -88,6 +88,4 @@ button:hover, .file-label:hover {
   padding: 10px;
 }
 
-tbody label .file-label, tbody button{
-  display: flex;
-}
+
