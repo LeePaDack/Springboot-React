@@ -43,10 +43,9 @@ public class ProfileController {
 	@RequestParam("React 에서 가져올 변수명")
 	 */
 	@PostMapping("/upload")
-	public ResponseEntity<String> insertProfile(@RequestParam("file") MultipartFile[] files,
-												@RequestParam("username") String username,
-												@RequestParam("profileImageUrl") String profileImageUrl) {
-		service.uploadProfile(files, username, profileImageUrl);
+	public ResponseEntity<String> insertProfile(@RequestParam("files") MultipartFile[] files,
+												@RequestParam("username") String username) {
+		service.uploadProfile(files, username);
 		return ResponseEntity.ok("프로필 이미지 업로드 성공");
 	}
 	
