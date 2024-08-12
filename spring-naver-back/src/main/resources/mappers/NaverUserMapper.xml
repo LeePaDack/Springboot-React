@@ -9,4 +9,8 @@
 		INSERT INTO naver_user(id, email, nickname, name, gender, profile_image, password)
 		VALUES (#{id}, #{email}, #{nickname}, #{name}, #{gender}, #{profileImage}, #{password})
 	</insert>
+	
+	<select id="findAll">
+		SELECT * FROM naver_user
+	</select>
 </mapper>
