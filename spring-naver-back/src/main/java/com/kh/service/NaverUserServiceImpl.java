@@ -21,14 +21,11 @@ implements 로 상속받는
 public class NaverUserServiceImpl implements NaverUserService{
 	@Autowired
 	private NaverUserMapper userMapper;
-
-	@Override
-	public List<NaverUser> findAll() {
-		return userMapper.findAll();
-	}
 	
 	@Override
 	public void insertNaverUser(NaverUser user) {
 		userMapper.insertNaverUser(user);
 	}
+
+
 }

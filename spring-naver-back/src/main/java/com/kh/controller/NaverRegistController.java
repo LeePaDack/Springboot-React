@@ -19,13 +19,7 @@ public class NaverRegistController {
 	@Autowired
 	private NaverUserService naverUserService;
 	
-	// 불러오기를 위한 GetMapping 작성
-	@GetMapping
-	public ResponseEntity<List<NaverUser>> findAll(){
-		List<NaverUser> naverUser = naverUserService.findAll();
-		return ResponseEntity.ok(naverUser);
-	}
-	
+
 	// 회원가입을 위한 PostMapping 작성
 	@PostMapping("/NaverAPI/register") // 프론트와 데이터를 주고받기 위한 만남의 장소 url, api 라 부름
 	public String insertNaverUser(@RequestBody NaverUser naverUser) {

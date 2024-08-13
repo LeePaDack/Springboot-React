@@ -10,7 +10,5 @@
 		VALUES (#{id}, #{email}, #{nickname}, #{name}, #{gender}, #{profileImage}, #{password})
 	</insert>
 	
-	<select id="findAll">
-		SELECT * FROM naver_user
-	</select>
+
 </mapper>
