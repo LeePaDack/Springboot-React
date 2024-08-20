@@ -19,7 +19,7 @@
     border-radius: 8px;
     padding: 20px;
     background-color: #fff;
-    max-width: 250px;
+    min-width: 500px;
 }
 
 .stationName {
