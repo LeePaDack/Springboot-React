@@ -13,4 +13,9 @@ import com.kh.dto.Chicken;
 public interface ChickenRepository extends JpaRepository<Chicken, Integer> {
 	// 전체보기 전체넣기 전체수정 전체삭제 와 같은 기본 기능은
 	// JpaRepository 안에 모두 들어있음
+	
+	// 특정 값을 찾을 때 쓰는 기능
+	// findById(Integer id);  -> where 대신 find 
+	// 만약에 where 로 이메일 = '' 비밀번호 = '' 로그인을 한다 
+	// 래포지토리에 findByEmailPassword -> where 절
 }
