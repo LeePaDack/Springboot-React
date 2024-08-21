@@ -28,10 +28,6 @@ const ChickenForm = () => {
         setPrice("");
     }
 
-    const 삭제버튼 = () => {
-        axios.delete("http://localhost:9090/", )
-    }
-
     return(
         <div className="chickenform-container">
             <label>메뉴 이름 :
@@ -44,8 +40,6 @@ const ChickenForm = () => {
                 <input type="number" value={price} onChange={(e) => setPrice(e.target.value)}/>
             </label>
             <button onClick={제출버튼}>등록하기</button>
-            <button onClick={삭제버튼}>삭제하기</button>
-            <button>메인으로 돌아가기</button>
         </div>
     )
 }
