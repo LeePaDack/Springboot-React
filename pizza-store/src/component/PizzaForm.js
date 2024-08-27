@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../css/Pizzaform.css';
 
 
 const PizzaForm = () => {
@@ -30,9 +31,6 @@ const PizzaForm = () => {
         setPrice("");
     }
 
-    const handleGoBack = () => {
-        navigate("/");
-    }
     
     return(
         <div className="pizzaform-container">
@@ -50,7 +48,6 @@ const PizzaForm = () => {
             </label>
 
             <button onClick={handleRegister}>등록하기</button>
-            <button onClick={handleGoBack}>돌아가기</button>
         </div>
     )
 

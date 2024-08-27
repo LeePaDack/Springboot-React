@@ -1,3 +1,5 @@
+import '../css/PizzaRouter.css';
+
 /*
 is = 주로 true 인지 false 인지를 나타낼 때 많이 사용
 
@@ -14,10 +16,8 @@ const Modal = ({isOpen, onClose, children}) => {
     }
 
     return (
-        <div>
-            <div>
-                <button onClick={onClose}>닫기</button>
-            </div>
+        <div className='modal-container'>
+                <button onClick={onClose}>&times;</button>
             {children}
         </div>
     )
