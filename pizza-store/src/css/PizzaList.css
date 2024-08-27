@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pizza-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pizza-container h1 {
+    font-size: 36px;
+    /* color: #ff4500; */
+    background: linear-gradient(to left, red, orange, yellow, green, blue, purple);
+    /* 그라디언트가 text 에만 적용될 수 있도록 설정 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* 기존 글자 색 빼기 (탈색) */
+    /* 최신 웹 브라우저에서 색감이 적용될 수 있도록 최신 설정 */
+    background-clip: text;
+    color: transparent;
+
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pizza-container ul {
+    list-style: none;
+}
+
+.pizza-container li {
+    background-color: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.pizza-container li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+.pizza-name{
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.pizza-description{
+    font-size: 16px;
+    margin: 10px 0;
+    color: #666;
+}
+
+.pizza-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4500;
+}
+
+.pizza-container button{
+    padding: 10px 20px;
+    background-color: #f58f6a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3 ease;
+}
+
+/* 마우스가 버튼 위에 있을 때 발생하는 상태 */
+.pizza-container button:hover{
+    background-color: #e63900;
+}
+
+/* 키보드가 해당 버튼에 있을 때 발생하는 상태 tqb 을 눌렀을 때 나오는 것 */
+.pizza-container button:focus {
+    outline: none;
+    background-color: #e63900;
+}
