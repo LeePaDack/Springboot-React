@@ -1,4 +1,4 @@
-import './App.css';
+
 import {BrowserRouter as Router, Route, Routes}from 'react-router-dom';
 import PizzaList from './component/PizzaList';
 import PizzaForm from './component/PizzaForm';
